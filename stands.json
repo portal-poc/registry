@@ -12,7 +12,7 @@
   "dev1": {
     "url": "http://localhost:4503",
     "nexusUrl": "http://localhost:4400/nexus",
-    "branch": "release/1.4"
+    "branch": "release/1.5"
   },
   "tst": {
     "url": "http://localhost:4504",
