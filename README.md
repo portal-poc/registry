@@ -1,4 +1,4 @@
-# Remote registry
+# registry
 
 Simulates the registry repository (one per organisation): **which version of which remote runs on which stand**.
 
@@ -13,3 +13,16 @@ policies require the gate (`portal-cli registry check`) and the owner's approval
 rebuilt for a remote release.
 
 `local` points at dev servers. `uat`/`prod` entries are created by releases (empty until the first release).
+
+## Commands
+
+```sh
+pnpm install
+pnpm validate          # offline check (CI)
+pnpm status            # versions dashboard (needs the PoC infra running)
+pnpm check:uat         # gate: every uat entry against the uat host's compat.json
+pnpm deploy:uat        # config deploy after a merge → platform/.infra/stands/uat/config.json
+pnpm deploy:local      # local stand (dev servers) for `pnpm dev` in host
+```
+
+Releases arrive as pull requests opened by `portal-cli release --stand <stand> --pr` from a remote repository.

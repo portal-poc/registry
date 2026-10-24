@@ -1,0 +1,17 @@
+{
+  "name": "registry",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.15.0",
+  "description": "Which version of which remote runs on which stand.",
+  "scripts": {
+    "validate": "portal-cli registry validate",
+    "status": "portal-cli registry status --registry .",
+    "check:uat": "portal-cli registry check --registry . --stand uat",
+    "deploy:local": "portal-cli registry build --registry . --stand local --out ${PORTAL_INFRA_DIR:-../platform/.infra}/stands/local/config.json",
+    "deploy:uat": "portal-cli registry build --registry . --stand uat --out ${PORTAL_INFRA_DIR:-../platform/.infra}/stands/uat/config.json"
+  },
+  "devDependencies": {
+    "@portal-poc/cli": "^1.0.0"
+  }
+}
