@@ -5,5 +5,6 @@
   "scopes": [
     "api://tasks-bff/Tasks.ReadWrite"
   ],
-  "devServer": true
+  "devServer": true,
+  "title": "Tasks"
 }

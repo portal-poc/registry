@@ -4,5 +4,6 @@
   "basePath": "/legacy",
   "scopes": [
     "api://legacy-bff/Legacy.Read"
-  ]
+  ],
+  "title": "Legacy"
 }

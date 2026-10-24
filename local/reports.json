@@ -1,0 +1,10 @@
+{
+  "version": "dev",
+  "manifest": "http://localhost:5176/mf-manifest.json",
+  "basePath": "/reports",
+  "scopes": [
+    "api://reports-bff/Reports.ReadWrite"
+  ],
+  "devServer": true,
+  "title": "Reports"
+}
