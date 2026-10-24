@@ -11,6 +11,6 @@
     "deploy:uat": "portal-cli registry build --registry . --stand uat --out ${PORTAL_INFRA_DIR:-../platform/.infra}/stands/uat/config.json"
   },
   "devDependencies": {
-    "@portal-poc/cli": "^1.0.0"
+    "@portal-poc/cli": "^1.0.3"
   }
 }
