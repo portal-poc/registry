@@ -12,7 +12,9 @@ policies require the gate (`portal-cli registry check`) and the owner's approval
 (`portal-cli registry build --stand uat` → the stand's `/config.json`). Rollback = revert the PR. The host is never
 rebuilt for a remote release.
 
-`local` points at dev servers. `uat`/`prod` entries are created by releases (empty until the first release).
+Only deployed stands live here; `uat`/`prod` entries are created by releases (empty until the first release).
+Local development is never described in the registry: a developer lists the remotes they run in the host's
+`.env.development.local` (works for remotes that are not registered anywhere yet).
 
 ## Commands
 
@@ -22,7 +24,6 @@ pnpm validate          # offline check (CI)
 pnpm status            # versions dashboard (needs the PoC infra running)
 pnpm check:uat         # gate: every uat entry against the uat host's compat.json
 pnpm deploy:uat        # config deploy after a merge → platform/.infra/stands/uat/config.json
-pnpm deploy:local      # local stand (dev servers) for `pnpm dev` in host
 ```
 
 Releases arrive as pull requests opened by `portal-cli release --stand <stand> --pr` from a remote repository.

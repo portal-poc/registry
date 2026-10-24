@@ -1,7 +1,4 @@
 {
-  "local": {
-    "url": "http://localhost:5173"
-  },
   "uat": {
     "url": "http://localhost:4501",
     "nexusUrl": "http://localhost:4400/nexus"
