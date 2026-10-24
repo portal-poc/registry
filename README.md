@@ -2,7 +2,7 @@
 
 Simulates the registry repository (one per organisation): **which version of which remote runs on which stand**.
 
-- `stands.json` — stand definitions (URL, Nexus base, whether developer overrides are allowed).
+- `stands.json` — stand definitions (URL, Nexus base).
 - `<stand>/<remote>.json` — one file per remote per stand (no merge conflicts between teams).
   - `version`, `manifest`, `bridgeManifest` — owned by the remote team (CODEOWNERS), written by `portal-cli release`.
   - `basePath`, `scopes` — owned by the host/platform team (route and token allowlist need their approval).
