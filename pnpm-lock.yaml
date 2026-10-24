@@ -167,8 +167,8 @@ importers:
   .:
     devDependencies:
       '@portal-poc/cli':
-        specifier: ^1.0.3
-        version: 1.0.3(@feature-sliced/steiger-plugin@0.8.0(typescript@5.9.3))(fallow@3.35.0)(steiger@0.8.0(typescript@5.9.3))(vitest@5.0.5(vite@8.3.5))
+        specifier: ^1.1.0
+        version: 1.1.0(@feature-sliced/steiger-plugin@0.8.0(typescript@5.9.3))(fallow@3.35.0)(steiger@0.8.0(typescript@5.9.3))(vitest@5.0.5(vite@8.3.5))
 
 packages:
 
@@ -383,8 +383,8 @@ packages:
   '@oxc-project/types@0.155.0':
     resolution: {integrity: sha512-SeE8JPwW1xs1tHeNycjUtUBdhorRa8o4jlvjwk49R7/Z291i+4DQa7JJIgOm/TaYQZx+QrPQbVJ/9c8dMIZN8Q==}
 
-  '@portal-poc/cli@1.0.3':
-    resolution: {integrity: sha512-1G2iYqgmEzee3vHZLt7Gx7JapvwS76JBjs9uIWiexR+ZA6xNlnkOWKelzXcaF5trbYvGBoMoV7JBbgbbZ92hDg==, tarball: https://npm.pkg.github.com/download/@portal-poc/cli/1.0.3/3ed021c48f12dd7022b7a4da4f4765412ef303db}
+  '@portal-poc/cli@1.1.0':
+    resolution: {integrity: sha512-2scQew8dkffJaj7rkEd4pmT0+wmSYeLusapWkezPfdy5zUPMvXMV/YVsFXgI8AgTD2DTNQeO416eORNNZRjA2Q==, tarball: https://npm.pkg.github.com/download/@portal-poc/cli/1.1.0/1ea7cd91d125ab15a84b3bb4436ca3f5a07d78ae}
     hasBin: true
 
   '@portal-poc/mf-shared@1.0.0':
@@ -1340,7 +1340,7 @@ snapshots:
 
   '@oxc-project/types@0.155.0': {}
 
-  '@portal-poc/cli@1.0.3(@feature-sliced/steiger-plugin@0.8.0(typescript@5.9.3))(fallow@3.35.0)(steiger@0.8.0(typescript@5.9.3))(vitest@5.0.5(vite@8.3.5))':
+  '@portal-poc/cli@1.1.0(@feature-sliced/steiger-plugin@0.8.0(typescript@5.9.3))(fallow@3.35.0)(steiger@0.8.0(typescript@5.9.3))(vitest@5.0.5(vite@8.3.5))':
     dependencies:
       '@inquirer/prompts': 8.7.4
       '@portal-poc/mf-shared': 1.0.0

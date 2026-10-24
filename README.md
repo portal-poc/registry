@@ -1,29 +1,45 @@
 # registry
 
-Simulates the registry repository (one per organisation): **which version of which remote runs on which stand**.
+**Which version of which remote runs on which stand.** One file per remote per stand, every change is a pull request
+(audit, approval, rollback = revert). The host is never rebuilt for a remote release.
 
-- `stands.json` — stand definitions (URL, Nexus base).
-- `<stand>/<remote>.json` — one file per remote per stand (no merge conflicts between teams).
-  - `version`, `manifest`, `bridgeManifest` — owned by the remote team (CODEOWNERS), written by `portal-cli release`.
-  - `basePath`, `scopes` — owned by the host/platform team (route and token allowlist need their approval).
+- `stands.json` — the stands and **where their versions come from**:
 
-Flow: `portal-cli release --stand uat` = verified change of `<stand>/<remote>.json` → in CI it opens a PR; branch
-policies require the gate (`portal-cli registry check`) and the owner's approval; merge triggers the config deploy
-(`portal-cli registry build --stand uat` → the stand's `/config.json`). Rollback = revert the PR. The host is never
-rebuilt for a remote release.
+  | Stand | Source | Who uses it |
+  |---|---|---|
+  | `dev3` | `"branch": "develop"` — every merge to develop | developers |
+  | `dev2` | `"branch": "latest-release"` — the newest `release/X.Y` | QA |
+  | `dev1` | `"branch": "release/1.4"` — the pilot line, pinned by release managers | team testers |
+  | `tst` | `"promoteFrom": "dev1"` — nothing is built for it | business testers |
 
-Only deployed stands live here; `uat`/`prod` entries are created by releases (empty until the first release).
-Local development is never described in the registry: a developer lists the remotes they run in the host's
-`.env.development.local` (works for remotes that are not registered anywhere yet).
+- `<stand>/<remote>.json` — `version`, `manifest`, `bridgeManifest` (written by releases), `basePath`, `scopes`,
+  `title` (host/platform team).
+
+## How versions get here
+
+| Event | Who | Result |
+|---|---|---|
+| merge to `develop` | remote CI | `1.6.0-dev.57` → PR to `dev3/` (auto-merge on a green gate) |
+| tag `v1.5.0` on `release/1.5` | remote CI | PR to `dev2/` (`release/1.5` is the newest line) |
+| tag `v1.4.2` on `release/1.4` | remote CI | PR to `dev1/` (`release/1.4` is the pilot) |
+| "Promote" workflow / `pnpm promote:tst` | release manager | the versions of `dev1` → PR to `tst/` |
+| `portal-cli stand switch dev1 --branch release/1.5 --pr` | release manager | one PR: `stands.json` + the 1.5 versions on `dev1` |
+| something broke | anyone | revert the PR |
+
+CI decides the stands from the version alone: `X.Y.Z-dev.N` was built on develop, `X.Y.Z` on `release/X.Y`
+(`portal-cli release --auto`). A tag on a line no stand follows is published but released nowhere.
+
+Every write goes through the gate against the host **deployed on that stand** (`compat.json`); merging a PR runs the
+config deploy (`portal-cli registry build` → the stand's `/config.json`). Local development is never described here:
+developers list the remotes they run in the host's `.env.development.local`.
 
 ## Commands
 
 ```sh
 pnpm install
-pnpm validate          # offline check (CI)
+pnpm validate          # offline check (CI): entries + stands.json mapping
 pnpm status            # versions dashboard (needs the PoC infra running)
-pnpm check:uat         # gate: every uat entry against the uat host's compat.json
-pnpm deploy:uat        # config deploy after a merge → platform/.infra/stands/uat/config.json
+pnpm check             # gate: every entry against its stand's host compat.json
+pnpm deploy            # config deploy after a merge → platform/.infra/stands/<stand>/config.json
+pnpm promote:tst       # dev1 → tst as a pull request
 ```
-
-Releases arrive as pull requests opened by `portal-cli release --stand <stand> --pr` from a remote repository.

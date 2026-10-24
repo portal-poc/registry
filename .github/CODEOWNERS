@@ -1,6 +1,9 @@
-# Version/manifest of a remote: its team. basePath/scopes and new remotes: the host/platform team.
-# Replace the placeholders with real teams.
-*                @portal-poc/platform
-/*/tasks.json    @portal-poc/tasks-team @portal-poc/platform
-/*/legacy.json   @portal-poc/legacy-team @portal-poc/platform
-/stands.json     @portal-poc/platform
+# Who approves a change of each stand (placeholders — replace with real teams). The last matching rule wins.
+# dev3 follows develop automatically: no owner, the gate alone (registry check) guards it, PRs auto-merge.
+*               @portal-poc/platform
+/dev3/
+/dev2/          @portal-poc/qa
+/dev1/          @portal-poc/team-testers
+/tst/           @portal-poc/business-testers
+# Which branch each stand follows (pilot switch): release managers.
+/stands.json    @portal-poc/release-managers

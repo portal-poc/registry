@@ -1,10 +1,22 @@
 {
-  "uat": {
+  "dev3": {
     "url": "http://localhost:4501",
-    "nexusUrl": "http://localhost:4400/nexus"
+    "nexusUrl": "http://localhost:4400/nexus",
+    "branch": "develop"
   },
-  "prod": {
+  "dev2": {
     "url": "http://localhost:4502",
-    "nexusUrl": "http://localhost:4400/nexus"
+    "nexusUrl": "http://localhost:4400/nexus",
+    "branch": "latest-release"
+  },
+  "dev1": {
+    "url": "http://localhost:4503",
+    "nexusUrl": "http://localhost:4400/nexus",
+    "branch": "release/1.4"
+  },
+  "tst": {
+    "url": "http://localhost:4504",
+    "nexusUrl": "http://localhost:4400/nexus",
+    "promoteFrom": "dev1"
   }
 }
