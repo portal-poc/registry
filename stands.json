@@ -1,0 +1,16 @@
+{
+  "local": {
+    "url": "http://localhost:5173",
+    "allowOverrides": true
+  },
+  "uat": {
+    "url": "http://localhost:4501",
+    "nexusUrl": "http://localhost:4400/nexus",
+    "allowOverrides": true
+  },
+  "prod": {
+    "url": "http://localhost:4502",
+    "nexusUrl": "http://localhost:4400/nexus",
+    "allowOverrides": false
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": "dev",
+  "manifest": "http://localhost:5174/mf-manifest.json",
+  "basePath": "/tasks",
+  "scopes": [
+    "api://tasks-bff/Tasks.ReadWrite"
+  ],
+  "devServer": true
+}

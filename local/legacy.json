@@ -1,0 +1,9 @@
+{
+  "version": "dev",
+  "manifest": "http://localhost:5175/mf-manifest.json",
+  "basePath": "/legacy",
+  "scopes": [
+    "api://legacy-bff/Legacy.Read"
+  ],
+  "devServer": true
+}
