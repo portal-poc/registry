@@ -1,7 +1,7 @@
 {
-  "version": "1.6.0-rc.3",
-  "manifest": "https://nexus.poc.ashirokov.dev/repository/portal-releases/tasks/1.6.0-rc.3/mf-manifest.json",
-  "bridgeManifest": "https://nexus.poc.ashirokov.dev/repository/portal-releases/tasks/1.6.0-rc.3/bridge/mf-manifest.json",
+  "version": "1.7.0-rc.12",
+  "manifest": "https://nexus.poc.ashirokov.dev/repository/portal-releases/tasks/1.7.0-rc.12/mf-manifest.json",
+  "bridgeManifest": "https://nexus.poc.ashirokov.dev/repository/portal-releases/tasks/1.7.0-rc.12/bridge/mf-manifest.json",
   "basePath": "/tasks",
   "scopes": [
     "api://tasks-bff/Tasks.ReadWrite"
