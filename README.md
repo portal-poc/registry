@@ -19,6 +19,9 @@
 - `<stand>/<remote>.json` — `version`, `manifest`, `bridgeManifest` (written by deploys), `basePath`, `scopes`,
   `title` (host/platform team). On `dev3` the entry is constant (`"version": "snapshot"`): a deploy overwrites the
   snapshot, not the entry.
+- `<stand>/_host.json` — the stand's host: `version` (+ `commit`), written by the host's **Deploy** on release stands
+  (and brought along by Promote). Config deploy installs that version from `portal-releases/host/<version>/` onto the
+  stand. `"snapshot"` on dev3; no file = the stand keeps whatever host it has.
 
 ## How versions get here
 
@@ -30,7 +33,8 @@ Nothing is automatic: a person presses a button and picks the stand.
 | remote repo: **Deploy**, `dev2`/`dev1`, `release/1.5` | developer | `1.5.3-rc.N` published, commit to `dev2/` (or `dev1/`) |
 | remote repo: **Deploy**, `dev2`/`dev1`, tag `v1.5.2` | developer | `1.5.2` (published once, reused later), commit |
 | remote repo: **Deploy** of an older tag | anyone | rollback: same artifact, no rebuild |
-| registry: **Promote** workflow / `pnpm promote:tst` | release manager | the versions of `dev1` → `tst/`, commit |
+| host repo: **Deploy**, `dev2`/`dev1`, `release/1.7` or a tag | developer | `host@1.7.0-rc.N` published once, reverse gate, commit to `<stand>/_host.json` |
+| registry: **Promote** workflow / `pnpm promote:tst` | release manager | the versions of `dev1` → `tst/` (host included), commit |
 | `portal-cli stand switch dev1 --branch release/1.6 --pr` | release manager | one PR: `stands.json` + the 1.6 versions on `dev1` |
 
 `portal-cli deploy` refuses before building: `develop` or a feature branch to `dev2`/`dev1`, another line than the
