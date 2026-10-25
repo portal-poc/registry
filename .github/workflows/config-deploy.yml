@@ -1,6 +1,7 @@
 name: Config deploy
 # Every registry change reaches the stands: each stand's /config.json (its entries) is rebuilt and uploaded to Nexus
-# (portal-stands/<stand>/config.json, served by the stand). Runs on every push to main — deploy commits come with the
+# (portal-stands/<stand>/config.json, served by the stand), and a release stand gets the host version its _host.json
+# names (copied from portal-releases/host/<version>/ when it serves another one). Runs on every push to main — deploy commits come with the
 # deploy key, so they trigger it — and after Promote, whose GITHUB_TOKEN push would not.
 on:
   push:
@@ -30,9 +31,10 @@ jobs:
       - name: Authenticate to GitHub Packages (@portal-poc)
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
       - run: pnpm install --frozen-lockfile
-      - name: Upload every stand's /config.json
+      - name: Install every stand's host and upload its /config.json
         run: |
           for stand in $(jq -r 'keys_unsorted[]' stands.json); do
+            pnpm exec portal-cli host sync --registry . --stand "$stand"
             pnpm exec portal-cli registry build --registry . --stand "$stand" --upload
           done
         env:
