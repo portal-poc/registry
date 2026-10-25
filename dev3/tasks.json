@@ -1,7 +1,7 @@
 {
   "version": "snapshot",
-  "manifest": "http://localhost:4400/repository/portal-snapshots/dev3/tasks/mf-manifest.json",
-  "bridgeManifest": "http://localhost:4400/repository/portal-snapshots/dev3/tasks/bridge/mf-manifest.json",
+  "manifest": "https://nexus.poc.ashirokov.dev/repository/portal-snapshots/dev3/tasks/mf-manifest.json",
+  "bridgeManifest": "https://nexus.poc.ashirokov.dev/repository/portal-snapshots/dev3/tasks/bridge/mf-manifest.json",
   "basePath": "/tasks",
   "scopes": [
     "api://tasks-bff/Tasks.ReadWrite"

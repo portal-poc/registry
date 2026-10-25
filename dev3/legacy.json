@@ -1,6 +1,6 @@
 {
   "version": "snapshot",
-  "manifest": "http://localhost:4400/repository/portal-snapshots/dev3/legacy/mf-manifest.json",
+  "manifest": "https://nexus.poc.ashirokov.dev/repository/portal-snapshots/dev3/legacy/mf-manifest.json",
   "basePath": "/legacy",
   "scopes": [
     "api://legacy-bff/Legacy.Read"

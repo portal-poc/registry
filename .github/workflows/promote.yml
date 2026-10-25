@@ -35,3 +35,8 @@ jobs:
           git config --global user.name "portal-release"
           git config --global user.email "portal-release@users.noreply.github.com"
           pnpm exec portal-cli promote --from "${{ inputs.from }}" --to "${{ inputs.to }}" ${{ inputs.remote && format('--remote {0}', inputs.remote) || '' }} --push
+
+  config-deploy:
+    needs: promote
+    uses: ./.github/workflows/config-deploy.yml
+    secrets: inherit

@@ -1,22 +1,22 @@
 {
   "dev3": {
-    "url": "http://localhost:4501",
-    "nexusUrl": "http://localhost:4400/repository",
+    "url": "https://dev3.poc.ashirokov.dev",
+    "nexusUrl": "https://nexus.poc.ashirokov.dev/repository",
     "snapshot": true
   },
   "dev2": {
-    "url": "http://localhost:4502",
-    "nexusUrl": "http://localhost:4400/repository",
+    "url": "https://dev2.poc.ashirokov.dev",
+    "nexusUrl": "https://nexus.poc.ashirokov.dev/repository",
     "branch": "latest-release"
   },
   "dev1": {
-    "url": "http://localhost:4503",
-    "nexusUrl": "http://localhost:4400/repository",
+    "url": "https://dev1.poc.ashirokov.dev",
+    "nexusUrl": "https://nexus.poc.ashirokov.dev/repository",
     "branch": "release/1.5"
   },
   "tst": {
-    "url": "http://localhost:4504",
-    "nexusUrl": "http://localhost:4400/repository",
+    "url": "https://tst.poc.ashirokov.dev",
+    "nexusUrl": "https://nexus.poc.ashirokov.dev/repository",
     "promoteFrom": "dev1"
   }
 }
