@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "manifest": "http://localhost:4400/nexus/legacy/0.1.0/mf-manifest.json",
+  "manifest": "http://localhost:4400/repository/portal-releases/legacy/0.1.0/mf-manifest.json",
   "basePath": "/legacy",
   "scopes": [
     "api://legacy-bff/Legacy.Read"

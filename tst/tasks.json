@@ -1,7 +1,7 @@
 {
   "version": "1.4.1",
-  "manifest": "http://localhost:4400/nexus/tasks/1.4.1/mf-manifest.json",
-  "bridgeManifest": "http://localhost:4400/nexus/tasks/1.4.1/bridge/mf-manifest.json",
+  "manifest": "http://localhost:4400/repository/portal-releases/tasks/1.4.1/mf-manifest.json",
+  "bridgeManifest": "http://localhost:4400/repository/portal-releases/tasks/1.4.1/bridge/mf-manifest.json",
   "basePath": "/tasks",
   "scopes": [
     "api://tasks-bff/Tasks.ReadWrite"

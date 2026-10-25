@@ -9,7 +9,7 @@
     "status": "portal-cli registry status --registry .",
     "check": "for stand in dev3 dev2 dev1 tst; do portal-cli registry check --registry . --stand $stand || exit 1; done",
     "deploy": "for stand in dev3 dev2 dev1 tst; do portal-cli registry build --registry . --stand $stand --out ${PORTAL_INFRA_DIR:-../platform/.infra}/stands/$stand/config.json; done",
-    "promote:tst": "portal-cli promote --from dev1 --to tst --pr"
+    "promote:tst": "portal-cli promote --from dev1 --to tst"
   },
   "devDependencies": {
     "@portal-poc/cli": "^1.1.0"

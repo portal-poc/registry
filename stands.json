@@ -1,22 +1,22 @@
 {
   "dev3": {
     "url": "http://localhost:4501",
-    "nexusUrl": "http://localhost:4400/nexus",
-    "branch": "develop"
+    "nexusUrl": "http://localhost:4400/repository",
+    "snapshot": true
   },
   "dev2": {
     "url": "http://localhost:4502",
-    "nexusUrl": "http://localhost:4400/nexus",
+    "nexusUrl": "http://localhost:4400/repository",
     "branch": "latest-release"
   },
   "dev1": {
     "url": "http://localhost:4503",
-    "nexusUrl": "http://localhost:4400/nexus",
+    "nexusUrl": "http://localhost:4400/repository",
     "branch": "release/1.5"
   },
   "tst": {
     "url": "http://localhost:4504",
-    "nexusUrl": "http://localhost:4400/nexus",
+    "nexusUrl": "http://localhost:4400/repository",
     "promoteFrom": "dev1"
   }
 }

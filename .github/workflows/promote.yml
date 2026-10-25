@@ -1,5 +1,6 @@
 name: Promote
-# The "promote to tst" button: the versions that passed dev1 go to tst unchanged (no rebuild), as a pull request.
+# The "promote to tst" button: the versions that passed dev1 go to tst unchanged (no rebuild). Pressing it is the
+# approval: the change is committed to main (add a GitHub environment with required reviewers to gate it further).
 on:
   workflow_dispatch:
     inputs:
@@ -15,7 +16,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
   packages: read
 
 jobs:
@@ -30,10 +30,8 @@ jobs:
       - name: Authenticate to GitHub Packages (@portal-poc)
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
       - run: pnpm install --frozen-lockfile
-      - name: Promote (gate against the target stand's host) and open the PR
+      - name: Promote (gate against the target stand's host) and commit
         run: |
           git config --global user.name "portal-release"
           git config --global user.email "portal-release@users.noreply.github.com"
-          pnpm exec portal-cli promote --from "${{ inputs.from }}" --to "${{ inputs.to }}" ${{ inputs.remote && format('--remote {0}', inputs.remote) || '' }} --pr
-        env:
-          GH_TOKEN: ${{ github.token }}
+          pnpm exec portal-cli promote --from "${{ inputs.from }}" --to "${{ inputs.to }}" ${{ inputs.remote && format('--remote {0}', inputs.remote) || '' }} --push
