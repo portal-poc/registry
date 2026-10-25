@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "manifest": "https://nexus.poc.ashirokov.dev/repository/portal-releases/legacy/0.1.0/mf-manifest.json",
+  "version": "1.5.0-rc.2",
+  "manifest": "https://nexus.poc.ashirokov.dev/repository/portal-releases/legacy/1.5.0-rc.2/mf-manifest.json",
   "basePath": "/legacy",
   "scopes": [
     "api://legacy-bff/Legacy.Read"
