@@ -12,6 +12,6 @@
     "promote:tst": "portal-cli promote --from dev1 --to tst"
   },
   "devDependencies": {
-    "@portal-poc/cli": "^2.1.0"
+    "@portal-poc/cli": "^2.1.1"
   }
 }

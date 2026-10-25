@@ -47,7 +47,7 @@ the host's `.env.development.local`.
 
 ```sh
 pnpm install
-pnpm validate          # offline check (CI): entries + stands.json rules
+pnpm validate          # offline check (CI): entries, stands.json rules, release lines
 pnpm status            # versions dashboard; dev3 shows the built snapshot
 pnpm check             # gate: every entry against its stand's host compat.json
 pnpm deploy            # stand configs for the local stand-in (platform/.infra), used by the host dev server
