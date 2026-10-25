@@ -50,6 +50,5 @@ pnpm install
 pnpm validate          # offline check (CI): entries, stands.json rules, release lines
 pnpm status            # versions dashboard; dev3 shows the built snapshot
 pnpm check             # gate: every entry against its stand's host compat.json
-pnpm deploy            # stand configs for the local stand-in (platform/.infra), used by the host dev server
 pnpm promote:tst       # dev1 → tst, written locally (the workflow commits it)
 ```

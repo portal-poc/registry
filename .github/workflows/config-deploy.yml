@@ -20,11 +20,11 @@ jobs:
   config-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main # after Promote: the commit it just pushed, not the run's original SHA
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
       - name: Authenticate to GitHub Packages (@portal-poc)
