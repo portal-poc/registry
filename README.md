@@ -47,6 +47,51 @@ bot straight to main (the button press is the approval); hand edits (`basePath`,
 pull requests with CODEOWNERS. Local development is never described here: developers list the remotes they run in
 the host's `.env.development.local`.
 
+## File formats
+
+`stands.json` — one key per stand:
+
+| Field | Meaning |
+|---|---|
+| `url` | where the stand is served |
+| `nexusUrl` | Nexus `/repository` base for its artifacts |
+| `snapshot: true` | accepts any branch, overwritten in place (dev3) |
+| `branch` | `"latest-release"` (the newest `release/X.Y`) or a pinned `"release/1.5"` |
+| `promoteFrom` | never deployed to; Promote copies the named stand (tst ← dev1) |
+
+`<stand>/<remote>.json` — what the stand runs:
+
+```json
+{
+  "version": "1.8.0-rc.17",
+  "manifest": "https://nexus…/portal-releases/tasks/1.8.0-rc.17/mf-manifest.json",
+  "bridgeManifest": "https://nexus…/portal-releases/tasks/1.8.0-rc.17/bridge/mf-manifest.json",
+  "basePath": "/tasks",
+  "scopes": ["api://tasks-bff/Tasks.ReadWrite"],
+  "title": "Tasks"
+}
+```
+
+| Field | Written by | Meaning |
+|---|---|---|
+| `version`, `manifest`, `bridgeManifest` | the remote's Deploy / Promote / rollback | which build; `bridgeManifest` = the isolated variant the host falls back to |
+| `basePath` | first deploy (`base-path` input), then host team via PR | the route in the host |
+| `scopes` | first deploy (`scopes` input), then via PR | the token scopes the host lets this remote request (allowlist) |
+| `title` | host team via PR (optional) | menu label (default: the name) |
+
+`<stand>/_host.json` — `{ "version": "1.8.0-rc.22", "commit": "…" }`: the host version a release stand runs
+(`"snapshot"` on dev3).
+
+## Workflows
+
+| Workflow | Trigger | What it does |
+|---|---|---|
+| **CI** | push, PRs | `portal-cli registry validate`: entry shapes, `stands.json` rules, release lines |
+| **Config deploy** | every push to main, after Promote, manual | each stand's `/config.json` rebuilt and uploaded; release stands get the host version `_host.json` names |
+| **Promote** | manual (`from`, `to`, `remote`) | copies `from`'s entries (host included) to `to` and commits — the "promote to tst" button |
+
+Scenarios with diagrams (release, hotfix, promote, rollback, stand switch): [platform `docs/playbook.md`](https://github.com/portal-poc/platform/blob/main/docs/playbook.md).
+
 ## Commands
 
 ```sh
