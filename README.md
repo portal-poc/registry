@@ -1,5 +1,7 @@
 # registry
 
+> Part of the portal PoC. Start at the [platform README](https://github.com/portal-poc/platform#readme) — how all pieces interact: [overview](https://github.com/portal-poc/platform/blob/main/docs/overview.md).
+
 **Which version of which remote runs on which stand.** One file per remote per stand; every change is a commit
 (audit trail, rollback = deploy the previous version). The host is never rebuilt for a remote release.
 
